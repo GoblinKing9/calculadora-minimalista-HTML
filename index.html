@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Calculadora minimalista</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://calculadora-minimalista.glitch.me/style.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input type="text" id="display" />
+      <br />
+      <input type="button" value="1" />
+      <input type="button" value="2" />
+      <input type="button" value="3" />
+      <input type="button" value="+" />
+      <br />
+      <input type="button" value="4" />
+      <input type="button" value="5" />
+      <input type="button" value="6" />
+      <input type="button" value="-" />
+      <br />
+      <input type="button" value="7" />
+      <input type="button" value="8" />
+      <input type="button" value="9" />
+      <input type="button" value="*" />
+      <br />
+      <input type="button" value="C" />
+      <input type="button" value="0" />
+      <input type="button" value="=" />
+      <input type="button" value="/" />
+      <script>
+        document.body.style.overflow = "hidden"; // oculta las barras de desplazamiento
+        // Obtener elementos de la calculadora
+        const display = document.getElementById("display");
+        const buttons = document.querySelectorAll("input[type='button']");
+
+        // Verificar si se han obtenido correctamente los elementos
+        console.log(display);
+        console.log(buttons);
+
+        // Asignar eventos de clic a cada botón
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Obtener el valor del botón
+            const value = button.value;
+
+            // Mostrar el valor del botón en la consola
+            console.log(value);
+
+            // Si se hace clic en "C", borrar el contenido del display
+            if (value === "C") {
+              display.value = "";
+            }
+            // Si se hace clic en "=", evaluar la expresión y mostrar el resultado
+            else if (value === "=") {
+              display.value = eval(display.value);
+            }
+            // Si se hace clic en cualquier otro botón, añadir su valor al display
+            else {
+              display.value += value;
+            }
+          });
+        });
+      </script>
+    </form>
+  </body>
+</html>
